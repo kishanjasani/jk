@@ -14,6 +14,7 @@ if ( ! defined( 'JK_DIR_URI' ) ) {
 }
 
 require_once JK_DIR_PATH . '/inc/helpers/autoloader.php';
+require_once JK_DIR_PATH . '/inc/helpers/template-tags.php';
 
 function jk_get_theme_instance() {
     JK_THEME\Inc\JK_THEME::get_instance();
