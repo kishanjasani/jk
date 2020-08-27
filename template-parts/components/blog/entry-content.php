@@ -25,6 +25,7 @@
         );
     } else {
         jk_the_excerpt();
+        jk_excerpt_more();
     }
     ?>
 </div>
