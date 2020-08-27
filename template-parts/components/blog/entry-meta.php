@@ -6,3 +6,7 @@
  */
 
 ?>
+
+<div class="entry-meta mb-3">
+    <?php jk_posted_on(); ?>
+</div>
