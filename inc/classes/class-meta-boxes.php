@@ -48,6 +48,12 @@ class Meta_Boxes {
 
     public function custom_meta_box_html( $post ) {
         $value = get_post_meta( $post->ID, '_hide_page_title', true );
+
+        /**
+         * Use nonce for verification.
+         */
+        wp_nonce_field( plugin_basename( __FILE__ ), 'jk_hide_title_meta_box_nonce' );
+
         ?>
         <label for="jk-hide-title-field"><?php esc_html_e( 'Hide the page title', 'jk' ) ?></label>
         <select name="jk_hide_title_field" id="jk-hide-title-field" class="">
@@ -63,11 +69,26 @@ class Meta_Boxes {
     }
 
     public function save_post_meta_data( $post_id ) {
+
+        /**
+         * Nonce verification & Authorization.
+         */
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+
+        if ( empty( $_POST['jk_hide_title_meta_box_nonce'] ) || 
+            ! wp_verify_nonce( $_POST['jk_hide_title_meta_box_nonce'], plugin_basename( __FILE__ ) ) 
+        ) {
+            return;
+        }
+
+
         if ( array_key_exists( 'jk_hide_title_field', $_POST ) ) {
             update_post_meta(
                 $post_id,
                 '_hide_page_title',
-                $_POST['jk_hide_title_field'],
+                $_POST['jk_hide_title_field']
             );
         }
     }
