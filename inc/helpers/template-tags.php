@@ -5,7 +5,7 @@
  * @package Jk
  */
 
-function get_the_post_custom_thumbnail( $post_id, $size = 'featured-large', $additional_args = [] ) {
+function get_the_post_custom_thumbnail( $post_id, $size = 'featured-thumbnail', $additional_args = [] ) {
     $custom_thumbnail = '';
 
     if ( null === $post_id ) {
@@ -29,6 +29,6 @@ function get_the_post_custom_thumbnail( $post_id, $size = 'featured-large', $add
     return $custom_thumbnail;
 }
 
-function the_post_custom_thumbnail( $post_id, $size = 'featured-large', $additional_args = [] ) {
+function the_post_custom_thumbnail( $post_id, $size = 'featured-thumbnail', $additional_args = [] ) {
     echo get_the_post_custom_thumbnail( $post_id, $size, $additional_args );
 }
