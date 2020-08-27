@@ -23,9 +23,18 @@
                 the_title( '<span class="screen-reader-text">"', '"</span>', false ) 
             )
         );
+
+        wp_link_pages(
+            [
+                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'jk' ),
+                'after'  => '</div>',
+            ]
+        );
+
     } else {
         jk_the_excerpt();
         jk_excerpt_more();
     }
+
     ?>
 </div>
