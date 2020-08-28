@@ -58,6 +58,8 @@ get_header();
         } else {
             get_template_part( 'template-parts/content', 'none' );
         }
+        
+        jk_pagination();
         ?>
     </main>
 </div>

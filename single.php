@@ -38,6 +38,10 @@ get_header();
                     }
                     ?>
                 </div>
+                <?php
+                    previous_post_link();
+                    next_post_link();
+                ?>
             </div>
             <?php
         } else {
