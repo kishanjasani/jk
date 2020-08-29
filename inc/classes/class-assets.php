@@ -43,6 +43,7 @@ class Assets {
 		// Register Styles.
 		wp_register_style( 'style-css', get_stylesheet_uri(), [], filemtime( JK_DIR_PATH . '/style.css' ), 'all' );
 		wp_register_style( 'bootstrap-css', JK_DIR_URI . '/assets/src/library/css/bootstrap.min.css', [], false, 'all' );
+		wp_enqueue_style( 'lato-fonts-css', JK_DIR_URI . '/assets/src/library/fonts/fonts.css', [], false, 'all' );
 
 		// Enqueue Styles.
 		wp_enqueue_style( 'style-css' );
