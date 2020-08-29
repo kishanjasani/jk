@@ -1,7 +1,7 @@
 const path = require( 'path' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
-const OptimizeCssAssetsWebpackPlugin = require( 'optimize-css-assets-webpack-plugin' );
+const OptimizeCssAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
 const cssnano = require( 'cssnano' );
 const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
 
@@ -49,6 +49,17 @@ const rules = [
 				},
 			},
 		]
+	},
+	{
+		test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+		exclude: [ IMG_DIR, /node_modules/ ],
+		use: {
+			loader: 'file-loader',
+			options: {
+				name: '[path][name].[ext]',
+				publicPath: 'production' === process.env.NODE_ENV ? '../' : '../../'
+			}
+		}
 	}
 ];
 
@@ -70,7 +81,7 @@ module.exports = ( env, argv ) => ( {
 	},
 	optimization: {
 		minimizer: [
-			new OptimizeCssAssetsWebpackPlugin({
+			new OptimizeCssAssetsPlugin({
 				cssProcessor: cssnano,
 			}),
 			new UglifyJsPlugin({

@@ -41,13 +41,12 @@ class Assets {
 	public function register_styles() {
 
 		// Register Styles.
-		wp_register_style( 'style-css', get_stylesheet_uri(), [], filemtime( JK_DIR_PATH . '/style.css' ), 'all' );
+		wp_register_style( 'main-css', JK_BUILD_CSS_URI . '/main.css', [ 'bootstrap-css' ], filemtime( JK_BUILD_CSS_DIR_PATH . '/main.css' ), 'all' );
 		wp_register_style( 'bootstrap-css', JK_DIR_URI . '/assets/src/library/css/bootstrap.min.css', [], false, 'all' );
-		wp_enqueue_style( 'lato-fonts-css', JK_DIR_URI . '/assets/src/library/fonts/fonts.css', [], false, 'all' );
 
 		// Enqueue Styles.
-		wp_enqueue_style( 'style-css' );
 		wp_enqueue_style( 'bootstrap-css' );
+		wp_enqueue_style( 'main-css' );
 	}
 
 	/**
