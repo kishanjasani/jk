@@ -5,6 +5,16 @@
  * @package Jk
  */
 
+/**
+ * Gets the thumbnail with Lazy Load.
+ * Should be called in the WordPress Loop.
+ *
+ * @param int|null $post_id               Post ID.
+ * @param string   $size                  The registered image size.
+ * @param array    $additional_attributes Additional attributes.
+ *
+ * @return string
+ */
 function get_the_post_custom_thumbnail( $post_id, $size = 'featured-thumbnail', $additional_args = [] ) {
 	$custom_thumbnail = '';
 
@@ -29,10 +39,22 @@ function get_the_post_custom_thumbnail( $post_id, $size = 'featured-thumbnail', 
 	return $custom_thumbnail;
 }
 
+/**
+ * Renders Custom Thumbnail with Lazy Load.
+ *
+ * @param int    $post_id               Post ID.
+ * @param string $size                  The registered image size.
+ * @param array  $additional_attributes Additional attributes.
+ */
 function the_post_custom_thumbnail( $post_id, $size = 'featured-thumbnail', $additional_args = [] ) {
 	echo get_the_post_custom_thumbnail( $post_id, $size, $additional_args );
 }
 
+/**
+ * Prints HTML with meta information for the current post-date/time.
+ *
+ * @return void
+ */
 function jk_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 
@@ -57,6 +79,11 @@ function jk_posted_on() {
 	echo '<span class="posted-on text-secondary">' . $posted_on . '</span>';
 }
 
+/**
+ * Prints HTML with meta information for the current author.
+ *
+ * @return void
+ */
 function jk_posted_by() {
 	$byline = sprintf(
 		esc_html_x( 'by %s', 'post author', 'jk' ),
@@ -66,6 +93,20 @@ function jk_posted_by() {
 	echo '<span class="byline text-secondary">' . $byline . '</span>';
 }
 
+/**
+ * Get the trimmed version of post excerpt.
+ *
+ * This is for modifing manually entered excerpts,
+ * NOT automatic ones WordPress will grab from the content.
+ *
+ * It will display the first given characters ( e.g. 100 ) characters of a manually entered excerpt,
+ * but instead of ending on the nth( e.g. 100th ) character,
+ * it will truncate after the closest word.
+ *
+ * @param int $trim_character_count Charter count to be trimmed
+ *
+ * @return bool|string
+ */
 function jk_the_excerpt( $trim_character_count = 0 ) {
 	if ( ! has_excerpt() || 0 === $trim_character_count ) {
 		the_excerpt();
@@ -79,6 +120,13 @@ function jk_the_excerpt( $trim_character_count = 0 ) {
 	echo $excerpt;
 }
 
+/**
+ * Filter the "read more" excerpt string link to the post.
+ *
+ * @param string $more "Read more" excerpt string.
+ *
+ * @return string (Maybe) modified "read more" excerpt string.
+ */
 function jk_excerpt_more( $more = '' ) {
 	if ( ! is_single() ) {
 		$more = sprintf(
@@ -91,6 +139,11 @@ function jk_excerpt_more( $more = '' ) {
 	echo $more;
 }
 
+/**
+ * Aquila Pagination.
+ *
+ * @return void
+ */
 function jk_pagination() {
 
 	$allowed_tags = [
