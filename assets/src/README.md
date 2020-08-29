@@ -214,3 +214,9 @@ Now run `npm run dev` and it will run the webpack dev server in watch mode and b
 ```
 npm run dev
 ```
+
+### SCSS Configurations
+Install packages:
+```
+npm i node-sass sass-loader sass-mq -D
+```

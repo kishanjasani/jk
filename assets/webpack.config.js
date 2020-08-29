@@ -34,7 +34,8 @@ const rules = [
 		exclude: /node_modules/,
 		use: [
 			MiniCssExtractPlugin.loader,
-			'css-loader'
+			'css-loader',
+			'sass-loader'
 		]
 	},
 	{
