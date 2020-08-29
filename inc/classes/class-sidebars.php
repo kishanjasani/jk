@@ -30,6 +30,7 @@ class Sidebars {
 
 		// Actions and filters.
 		add_action( 'widgets_init', [ $this, 'register_sidebars' ] );
+		add_action( 'widgets_init', [ $this, 'register_widgets' ] );
 	}
 
 	/**
@@ -61,5 +62,9 @@ class Sidebars {
 				'after_title'   => '</h3>',
 			]
 		);
+	}
+
+	public function register_widgets() {
+		register_widget( 'JK_THEME\Inc\Clock_Widget' );
 	}
 }
