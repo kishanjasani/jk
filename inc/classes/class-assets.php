@@ -57,7 +57,7 @@ class Assets {
 	public function register_scripts() {
 
 		// Register Scripts.
-		wp_register_script( 'main-js', JK_DIR_URI . '/assets/main.js', [], filemtime( JK_DIR_PATH . '/assets/main.js' ), true );
+		wp_register_script( 'main-js', JK_BUILD_JS_URI . '/main.js', [], filemtime( JK_BUILD_JS_DIR_PATH . '/main.js' ), true );
 		wp_register_script( 'bootstrap-js', JK_DIR_URI . '/assets/src/library/js/bootstrap.min.js', [ 'jquery' ], false, true );
 
 		// Enqueue Scrips.
