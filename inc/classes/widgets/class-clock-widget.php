@@ -5,7 +5,7 @@
  * @package Jk
  */
 
-namespace JK_THEME\Inc;
+namespace JK_THEME\Inc\Widgets;
 
 use JK_THEME\Inc\Traits\Singleton;
 use WP_Widget;

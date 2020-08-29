@@ -65,6 +65,6 @@ class Sidebars {
 	}
 
 	public function register_widgets() {
-		register_widget( 'JK_THEME\Inc\Clock_Widget' );
+		register_widget( 'JK_THEME\Inc\Widgets\Clock_Widget' );
 	}
 }
