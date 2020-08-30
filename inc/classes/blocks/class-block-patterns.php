@@ -35,16 +35,30 @@ class Block_Patterns {
 
 	public function register_block_patterns() {
 		if ( function_exists( 'register_block_pattern' ) ) {
+
+			$cover_content = $this->get_pattern_content( 'template-parts/patterns/cover' );
+
 			register_block_pattern(
 				'jk/cover',
 				[
 					'title'       => __( 'JK Cover', 'jk' ),
 					'description' => __( 'JK Cover block with image and text', 'jk' ),
 					'categories'  => [ 'cover' ],
-					'content'     => "<!-- wp:buttons {\"align\":\"center\"} -->\n<div class=\"wp-block-buttons aligncenter\"><!-- wp:button {\"backgroundColor\":\"very-dark-gray\",\"borderRadius\":0} -->\n<div class=\"wp-block-button\"><a class=\"wp-block-button__link has-background has-very-dark-gray-background-color no-border-radius\">" . esc_html__( 'Button One', 'my-plugin' ) . "</a></div>\n<!-- /wp:button -->\n\n<!-- wp:button {\"textColor\":\"very-dark-gray\",\"borderRadius\":0,\"className\":\"is-style-outline\"} -->\n<div class=\"wp-block-button is-style-outline\"><a class=\"wp-block-button__link has-text-color has-very-dark-gray-color no-border-radius\">" . esc_html__( 'Button Two', 'my-plugin' ) . "</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons -->",
+					'content'     => $cover_content,
 				]
 			);
 		}
+	}
+
+	public function get_pattern_content( $template_path ) {
+		ob_start();
+
+		get_template_part( $template_path );
+
+		$pattern_content = ob_get_contents();
+		ob_end_clean();
+
+		return $pattern_content;
 	}
 
 	public function register_block_pattern_categories() {
