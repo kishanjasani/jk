@@ -8,6 +8,7 @@
 namespace JK_THEME\Inc;
 
 use JK_THEME\Inc\Traits\Singleton;
+use JK_THEME\Inc\Blocks\Block_Patterns as Block_Patterns;
 
 class JK_THEME {
 	use Singleton;
@@ -19,6 +20,7 @@ class JK_THEME {
 		Menus::get_instance();
 		Meta_Boxes::get_instance();
 		Sidebars::get_instance();
+		Block_Patterns::get_instance();
 
 		$this->setup_hooks();
 	}
@@ -170,7 +172,10 @@ class JK_THEME {
 		 * @see add_editor_style(
 		 * @link https://developer.wordpress.org/reference/functions/add_editor_style/
 		 */
-		add_editor_style();
+		add_editor_style( 'assets/build/css/editor.css' );
+
+		// Remove the core block patterns.
+		remove_theme_support( 'core-block-patterns' );
 	}
 
 }

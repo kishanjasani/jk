@@ -44,3 +44,11 @@ function jk_get_theme_instance() {
 	JK_THEME\Inc\JK_THEME::get_instance();
 }
 jk_get_theme_instance();
+
+// Remove Guteberg Block Library CSS from loading on frontend.
+function jk_remove_block_styles() {
+	wp_dequeue_style( 'wp-block-library' );
+	wp_dequeue_style( 'wp-block-library-theme' );
+	wp_dequeue_style( 'wp-block-style' ); // Remove WooCommerce block CSS.
+}
+add_action( 'wp_enqueue_scripts', 'jk_remove_block_styles', 100 );
