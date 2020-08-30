@@ -7,13 +7,13 @@
 
 ?>
 
-<!-- wp:cover {"url":"http://theme.local/wp-content/uploads/2008/06/img_0767.jpg","id":770,"align":"full"} -->
-<div class="wp-block-cover alignfull has-background-dim" style="background-image:url(http://theme.local/wp-content/uploads/2008/06/img_0767.jpg)"><div class="wp-block-cover__inner-container"><!-- wp:heading {"align":"center"} -->
+<!-- wp:cover {"url":"<?php echo esc_url( JK_BUILD_IMAGE_URI . '/patterns/cover.jpg' ); ?>","id":770,"minHeight":640,"align":"full"} -->
+<div class="wp-block-cover alignfull has-background-dim" style="background-image:url(<?php echo esc_url( JK_BUILD_IMAGE_URI . '/patterns/cover.jpg' ); ?>);min-height:640px"><div class="wp-block-cover__inner-container"><!-- wp:heading {"align":"center"} -->
 <h2 class="has-text-align-center">Never let your memories be greater than your dreams!</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"cyan-bluish-gray"} -->
-<p class="has-cyan-bluish-gray-color has-text-color"><strong>Lorem Ipsum</strong> is simply dummied text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+<p class="has-cyan-bluish-gray-color has-text-color"><strong>Lorem Ipsum</strong>&nbsp;is simply dummied text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"align":"center"} -->

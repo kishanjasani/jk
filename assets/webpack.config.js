@@ -4,9 +4,11 @@ const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const OptimizeCssAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
 const cssnano = require( 'cssnano' );
 const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
+const CopyPlugin = require('copy-webpack-plugin'); // https://webpack.js.org/plugins/copy-webpack-plugin/
 
 const JS_DIR = path.resolve( __dirname, 'src/js' );
 const IMG_DIR = path.resolve( __dirname, 'src/img' );
+const LIB_DIR = path.resolve( __dirname, 'src/library' );
 const BUILD_DIR = path.resolve( __dirname, 'build' );
 
 const entry = {
@@ -40,15 +42,14 @@ const rules = [
 	},
 	{
 		test: /\.(png|jpg|svg|jpeg|gif|ico)$/,
-		use: [
-			{
-				loader: 'file-loader',
-				options: {
-					name: '[path][name].[ext]',
-					publicPath: 'production' === process.env.NODE_ENV ? '../' : '../../',
-				},
+		exclude: [ LIB_DIR, /node_modules/ ],
+		use: {
+			loader: 'file-loader',
+			options: {
+				name: '[path][name].[ext]',
+				publicPath: 'production' === process.env.NODE_ENV ? '../' : '../../',
 			},
-		]
+		},
 	},
 	{
 		test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -69,7 +70,12 @@ const plugins = ( argv ) => [
 	}),
 	new MiniCssExtractPlugin({
 		filename: 'css/[name].css'
-	})
+	}),
+	new CopyPlugin( {
+		patterns: [
+			{ from: LIB_DIR, to: BUILD_DIR + '/library' }
+		]
+	} ),
 ];
 
 module.exports = ( env, argv ) => ( {
@@ -88,7 +94,7 @@ module.exports = ( env, argv ) => ( {
 				cache: false,
 				parallel: true,
 				sourceMap: false,
-			})
+			}),
 		]
 	},
 	plugins: plugins( argv ),

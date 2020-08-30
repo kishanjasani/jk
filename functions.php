@@ -51,4 +51,4 @@ function jk_remove_block_styles() {
 	wp_dequeue_style( 'wp-block-library-theme' );
 	wp_dequeue_style( 'wp-block-style' ); // Remove WooCommerce block CSS.
 }
-add_action( 'wp_enqueue_scripts', 'jk_remove_block_styles', 100 );
+// add_action( 'wp_enqueue_scripts', 'jk_remove_block_styles', 100 );
