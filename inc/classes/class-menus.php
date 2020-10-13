@@ -39,10 +39,12 @@ class Menus {
 	 */
 	public function register_menus() {
 
-		register_nav_menus([
-			'jk-header-menu' => esc_html__( 'Header Menu', 'jk' ),
-			'jk-footer-menu' => esc_html__( 'Footer Menu', 'jk' ),
-		]);
+		register_nav_menus(
+			[
+				'jk-header-menu' => esc_html__( 'Header Menu', 'jk' ),
+				'jk-footer-menu' => esc_html__( 'Footer Menu', 'jk' ),
+			]
+		);
 	}
 
 	public function get_menu_id( $location ) {
@@ -51,7 +53,7 @@ class Menus {
 		$locations = get_nav_menu_locations();
 
 		// Get menu id by location.
-		$menu_id =  $locations[ $location ];
+		$menu_id = ! empty( $locations[ $location ] ) ? $locations[ $location ] : '';
 
 		return ! empty( $menu_id ) ? $menu_id : '';
 	}

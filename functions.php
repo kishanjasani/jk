@@ -21,6 +21,10 @@ if ( ! defined( 'JK_BUILD_JS_URI' ) ) {
 	define( 'JK_BUILD_JS_URI', untrailingslashit( get_template_directory_uri() ) . '/assets/build/js' );
 }
 
+if ( ! defined( 'JK_BUILD_PATH' ) ) {
+	define( 'JK_BUILD_PATH', untrailingslashit( get_template_directory() ) . '/assets/build' );
+}
+
 if ( ! defined( 'JK_BUILD_JS_DIR_PATH' ) ) {
 	define( 'JK_BUILD_JS_DIR_PATH', untrailingslashit( get_template_directory() ) . '/assets/build/js' );
 }
@@ -32,7 +36,7 @@ if ( ! defined( 'JK_BUILD_IMAGE_URI' ) ) {
 if ( ! defined( 'JK_BUILD_CSS_URI' ) ) {
 	define( 'JK_BUILD_CSS_URI', untrailingslashit( get_template_directory_uri() ) . '/assets/build/css' );
 }
-
+//wp_die(JK_BUILD_CSS_URI . '/blocks.css');
 if ( ! defined( 'JK_BUILD_CSS_DIR_PATH' ) ) {
 	define( 'JK_BUILD_CSS_DIR_PATH', untrailingslashit( get_template_directory() ) . '/assets/build/css' );
 }
