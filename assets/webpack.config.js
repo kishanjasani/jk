@@ -5,6 +5,7 @@ const OptimizeCssAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
 const cssnano = require( 'cssnano' );
 const UglifyJsPlugin = require( 'uglifyjs-webpack-plugin' );
 const CopyPlugin = require('copy-webpack-plugin'); // https://webpack.js.org/plugins/copy-webpack-plugin/
+const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
 
 const JS_DIR = path.resolve( __dirname, 'src/js' );
 const IMG_DIR = path.resolve( __dirname, 'src/img' );
@@ -15,6 +16,7 @@ const entry = {
 	main: JS_DIR + '/main.js',
 	single: JS_DIR + '/single.js',
 	editor: JS_DIR + '/editor.js',
+	blocks: JS_DIR + '/blocks.js',
 };
 
 const output = {
@@ -75,6 +77,10 @@ const plugins = ( argv ) => [
 		patterns: [
 			{ from: LIB_DIR, to: BUILD_DIR + '/library' }
 		]
+	} ),
+	new DependencyExtractionWebpackPlugin( {
+		injectPolyfill: true,
+		combineAssets: true
 	} ),
 ];
 
