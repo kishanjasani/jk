@@ -9,6 +9,7 @@ namespace JK_THEME\Inc;
 
 use JK_THEME\Inc\Traits\Singleton;
 use JK_THEME\Inc\Blocks\Block_Patterns as Block_Patterns;
+use JK_THEME\Inc\Blocks\Blocks as Blocks;
 
 class JK_THEME {
 	use Singleton;
@@ -20,6 +21,7 @@ class JK_THEME {
 		Menus::get_instance();
 		Meta_Boxes::get_instance();
 		Sidebars::get_instance();
+		Blocks::get_instance();
 		Block_Patterns::get_instance();
 
 		$this->setup_hooks();
